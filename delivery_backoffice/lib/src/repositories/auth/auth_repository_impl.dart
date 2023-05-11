@@ -22,7 +22,7 @@ class AuthRepositoryImpl implements AuthRepository {
           'admin': true,
         },
       );
-      return AuthModel.fromJson(result.data);
+      return AuthModel.fromMap(result.data);
     } on DioError catch (e, s) {
       if (e.response?.statusCode == 403) {
         log('Login ou senha inválidos', error: e, stackTrace: s);

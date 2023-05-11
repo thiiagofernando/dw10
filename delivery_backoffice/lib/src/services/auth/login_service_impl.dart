@@ -11,6 +11,9 @@ class LoginServiceImpl implements LoginService {
   @override
   Future<void> execute(String email, String password) async {
     final authModel = await _authRepository.login(email, password);
-    _storage.setData(SessionStorageKey.accessToken.key, authModel.accessToken);
+    _storage.setData(
+      SessionStorageKey.accessToken.key,
+      authModel.accessToken,
+    );
   }
 }
