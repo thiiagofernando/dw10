@@ -15,7 +15,7 @@ class PaymentTypeRepositoriesImpl implements PaymentTypeRepositories {
   Future<List<PaymentTypeModel>> findAll(bool? enabled) async {
     try {
       final paymentResult = await _dio.auth().get(
-        '/payment-type',
+        '/payment-types',
         queryParameters: {
           if (enabled != null) 'enabled': enabled,
         },
@@ -36,7 +36,7 @@ class PaymentTypeRepositoriesImpl implements PaymentTypeRepositories {
   Future<PaymentTypeModel> getByI(int id) async {
     try {
       final paymentResult = await _dio.auth().get(
-            '/payment-type/$id',
+            '/payment-types/$id',
           );
 
       return PaymentTypeModel.fromMap(paymentResult.data);
@@ -52,13 +52,13 @@ class PaymentTypeRepositoriesImpl implements PaymentTypeRepositories {
       final client = _dio.auth();
       if (model.id != null) {
         await client.put(
-          '/payment-type/${model.id}',
-          data: {model.toMap()},
+          '/payment-types/${model.id}',
+          data: model.toJson(),
         );
       } else {
         await client.post(
-          '/payment-type/',
-          data: {model.toMap()},
+          '/payment-types/',
+          data: model.toJson(),
         );
       }
     } on DioError catch (e, s) {
