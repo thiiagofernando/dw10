@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:mobx/mobx.dart';
 import '../../../models/payment_type_model.dart';
-import '../../../repositories/payment-type/payment_type_repositories.dart';
+import '../../../repositories/payment-type/payment_type_repository.dart';
 part 'payment_type_controller.g.dart';
 
 enum PaymentTypeStateStatus {
@@ -17,7 +17,7 @@ enum PaymentTypeStateStatus {
 class PaymentTypeController = PaymentTypeControllerBase with _$PaymentTypeController;
 
 abstract class PaymentTypeControllerBase with Store {
-  final PaymentTypeRepositories _paymentTypeRepositories;
+  final PaymentTypeRepository _paymentTypeRepositories;
 
   @readonly
   var _status = PaymentTypeStateStatus.inital;
