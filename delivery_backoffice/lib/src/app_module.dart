@@ -28,7 +28,7 @@ class AppModule extends Module {
               '/payment-type',
               module: PaymentTypeModule(),
             ),
-            ModuleRoute('products', module: ProductsModule())
+            ModuleRoute('/products', module: ProductsModule())
           ],
         ),
       ];
