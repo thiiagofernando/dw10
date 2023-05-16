@@ -3,14 +3,14 @@ enum Menu {
     '/payment-type/',
     'payment_type_ico.png',
     'payment_type_ico_selected.png',
-    'Administrar Formas de Pagamento',
+    'Formas de Pagamento',
   ),
 
   products(
     '/products/',
     'product_ico.png',
     'product_ico_selected.png',
-    'Administrar Produtos',
+    'Produtos',
   ),
   orders(
     '/order/',
