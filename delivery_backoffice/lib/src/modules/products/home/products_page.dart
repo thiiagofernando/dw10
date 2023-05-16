@@ -60,7 +60,7 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
       child: Column(
         children: [
           BaseHeader(
-            title: 'ADMINISTRAR PRODUTOS',
+            title: 'PRODUTOS',
             buttomLabel: 'ADICIONAR',
             searchChange: (value) {
               debouncer.call(() {
