@@ -31,8 +31,11 @@ class OrderRepositoryImpl implements OrderRepository {
   Future<List<OrderModel>> findAllOrderns(DateTime date, OrdermStatus? status) async {
     try {
       final orderResponse = await _dio.auth().get(
-        '/orders/',
-        queryParameters: {'date': date.toIso8601String(), if (status != null) 'status': status.acronym},
+        '/orders',
+        queryParameters: {
+          'date': date.toIso8601String(),
+          if (status != null) 'status': status.acronym,
+        },
       );
 
       return orderResponse.data.map<OrderModel>((o) => OrderModel.fromMap(o)).toList();

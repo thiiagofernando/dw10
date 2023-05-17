@@ -9,3 +9,6 @@ void main() async {
   await Env.instance.load();
   return runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }
+
+
+///Parou Aula 2 dia 5 as 23:41

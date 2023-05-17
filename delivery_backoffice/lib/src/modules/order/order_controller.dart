@@ -14,6 +14,7 @@ enum OrderStateStatus {
   loading,
   loaded,
   error,
+  showDatailModal,
 }
 
 class OrderController = OrderControllerBase with _$OrderController;
@@ -51,5 +52,12 @@ abstract class OrderControllerBase with Store {
       _status = OrderStateStatus.error;
       _erroMessage = 'Erro ao buscar pedidos do dia';
     }
+  }
+
+  @action
+  Future<void> showDatailModal(OrderModel model) async {
+    _status = OrderStateStatus.loading;
+    await Future.delayed(Duration.zero);
+    _status = OrderStateStatus.showDatailModal;
   }
 }

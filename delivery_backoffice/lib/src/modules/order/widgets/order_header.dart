@@ -15,7 +15,7 @@ class _OrderHeaderState extends State<OrderHeader> {
   @override
   Widget build(BuildContext context) {
     return BaseHeader(
-      title: 'Pedidos',
+      title: 'Pedidos do Dia',
       addButtom: false,
       filterWidget: DropdownButton<OrdermStatus>(
         value: statusSelecionado,

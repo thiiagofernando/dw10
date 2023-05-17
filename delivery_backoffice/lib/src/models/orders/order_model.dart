@@ -9,7 +9,7 @@ class OrderModel {
   final List<OrderProductModel> orderProducts;
   final int userId;
   final String address;
-  final String cPF;
+  final int cpf;
   int paymentTypeId;
   OrderModel({
     required this.id,
@@ -18,7 +18,7 @@ class OrderModel {
     required this.orderProducts,
     required this.userId,
     required this.address,
-    required this.cPF,
+    required this.cpf,
     required this.paymentTypeId,
   });
 
@@ -30,7 +30,7 @@ class OrderModel {
       'orderProducts': orderProducts.map((x) => x.toMap()).toList(),
       'userId': userId,
       'address': address,
-      'cPF': cPF,
+      'cpf': cpf,
       'paymentTypeId': paymentTypeId,
     };
   }
@@ -41,13 +41,13 @@ class OrderModel {
       date: DateTime.parse(map['date']),
       status: OrdermStatus.parse(map['status']),
       orderProducts: List<OrderProductModel>.from(
-        (map['products'] as List<int>).map<OrderProductModel>(
+        (map['products']).map<OrderProductModel>(
           (x) => OrderProductModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
       userId: map['user_id'] as int,
       address: map['address'] as String,
-      cPF: map['cPF'] as String,
+      cpf: map['CPF'] as int,
       paymentTypeId: map['payment_method_id'] as int,
     );
   }
