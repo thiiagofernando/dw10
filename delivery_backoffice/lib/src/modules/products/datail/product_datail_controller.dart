@@ -31,6 +31,9 @@ abstract class ProductDatailControllerBase with Store {
   String? _errorMessage;
 
   @readonly
+  ProductModel? _productModel;
+
+  @readonly
   String? _imagePatch;
   ProductDatailControllerBase(this._productRepository);
 
@@ -42,14 +45,52 @@ abstract class ProductDatailControllerBase with Store {
   }
 
   @action
+  Future<void> loadProduct(int? id) async {
+    try {
+      _status = ProductDatailsStateStatus.loading;
+      _productModel = null;
+      _imagePatch = null;
+      if (id != null) {
+        _productModel = await _productRepository.getProdut(id);
+        _imagePatch = _productModel!.image;
+      }
+      _status = ProductDatailsStateStatus.loaded;
+    } catch (e, s) {
+      log('Erro ao carregar produto', error: e, stackTrace: s);
+      _status = ProductDatailsStateStatus.errorLoadProduct;
+      _errorMessage = 'Erro ao carregar produto ';
+    }
+  }
+
+  @action
+  Future<void> deleteProduct() async {
+    try {
+      _status = ProductDatailsStateStatus.loading;
+      if (_productModel != null && _productModel!.id != null) {
+        await _productRepository.deleteProdut(_productModel!.id!);
+        _status = ProductDatailsStateStatus.deleted;
+      } else {
+        await Future.delayed(Duration.zero);
+        _status = ProductDatailsStateStatus.error;
+        _errorMessage = 'Produto não cadastrado, não é permitido deletar o produto ';
+      }
+    } catch (e, s) {
+      log('Erro ao deletar produto', error: e, stackTrace: s);
+      _status = ProductDatailsStateStatus.errorLoadProduct;
+      _errorMessage = 'Erro ao deletar produto ';
+    }
+  }
+
+  @action
   Future<void> save(String name, double price, String description) async {
     try {
       _status = ProductDatailsStateStatus.loading;
       final product = ProductModel(
+        id: _productModel?.id,
         name: name,
         description: description,
         price: price,
-        enabled: true,
+        enabled: _productModel?.enabled ?? true,
         image: _imagePatch!,
       );
 

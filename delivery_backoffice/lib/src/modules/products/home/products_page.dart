@@ -25,7 +25,7 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      statusDisposer = reaction((_) => controller.status, (status) {
+      statusDisposer = reaction((_) => controller.status, (status) async {
         switch (status) {
           case ProductStateStatus.initial:
             break;
@@ -38,6 +38,14 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
           case ProductStateStatus.error:
             hideLoader();
             showError('Erro ao Buscar Produtos');
+            break;
+          case ProductStateStatus.addOrUpdateProduct:
+            hideLoader();
+            final productSeletecd = controller.productSelect;
+            var uri = '/products/datail';
+            if (productSeletecd != null) uri += '?id=${productSeletecd.id}';
+            await Modular.to.pushNamed(uri);
+            controller.loadProducts();
             break;
         }
       });
@@ -67,10 +75,7 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
                 controller.filterByName(value);
               });
             },
-            buttomPressed: () async {
-              await Modular.to.pushNamed('/products/datail');
-              controller.loadProducts();
-            },
+            buttomPressed: controller.addProduct,
           ),
           const SizedBox(
             height: 50,

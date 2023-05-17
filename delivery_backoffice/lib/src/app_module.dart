@@ -1,3 +1,4 @@
+import 'modules/order/order_module.dart';
 import 'modules/payment_type/payment_type_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'modules/core/core_module.dart';
@@ -28,7 +29,8 @@ class AppModule extends Module {
               '/payment-type',
               module: PaymentTypeModule(),
             ),
-            ModuleRoute('/products', module: ProductsModule())
+            ModuleRoute('/products', module: ProductsModule()),
+            ModuleRoute('/order', module: OrderModule()),
           ],
         ),
       ];
