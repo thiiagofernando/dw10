@@ -50,7 +50,7 @@ class _OrderDetailModalState extends State<OrderDetailModal> {
                     Align(
                       alignment: Alignment.center,
                       child: Text(
-                        'Detalhes do Pedido',
+                        'Detalhes do Pedido ${widget.order.id}',
                         style: context.textStyles.textTitle,
                       ),
                     ),
@@ -120,7 +120,7 @@ class _OrderDetailModalState extends State<OrderDetailModal> {
                 const SizedBox(
                   height: 10,
                 ),
-                const OrderBottomBar(),
+                OrderBottomBar(controller: widget.controller, order: widget.order),
               ],
             ),
           ),
