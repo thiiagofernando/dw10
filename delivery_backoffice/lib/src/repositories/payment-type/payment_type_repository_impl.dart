@@ -26,7 +26,7 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
             (p) => PaymentTypeModel.fromMap(p),
           )
           .toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar formas de pagamento', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar formas de pagamento');
     }
@@ -40,7 +40,7 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
           );
 
       return PaymentTypeModel.fromMap(paymentResult.data);
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar forma de pagamento $id', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar forma de pagamento $id');
     }
@@ -61,7 +61,7 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
           data: model.toJson(),
         );
       }
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao salvar forma de pagamento ', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao salvar forma de pagamento ');
     }

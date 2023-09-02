@@ -15,6 +15,7 @@ class AppWidget extends StatelessWidget {
     Modular.setInitialRoute('/login');
     Modular.setNavigatorKey(_navigatorKey);
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Vaquinha Burguer',
       theme: ThemeConfig.theme,
       routeInformationParser: Modular.routeInformationParser,

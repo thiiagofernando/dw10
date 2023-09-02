@@ -20,7 +20,7 @@ class ProductRepositoryImpl implements ProductRepository {
         '/products/$id',
         data: {'enabled': false},
       );
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao Deletar Produto', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao Deletar Produto');
     }
@@ -42,7 +42,7 @@ class ProductRepositoryImpl implements ProductRepository {
             (p) => ProductModel.fromMap(p),
           )
           .toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao obter Produtos', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao obter Produtos');
     }
@@ -56,7 +56,7 @@ class ProductRepositoryImpl implements ProductRepository {
           );
 
       return ProductModel.fromMap(productResult.data);
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao obter Produto', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao obter Produto');
     }
@@ -78,7 +78,7 @@ class ProductRepositoryImpl implements ProductRepository {
           data: productData,
         );
       }
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao salvar Produto', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao salvar Produto');
     }
@@ -94,7 +94,7 @@ class ProductRepositoryImpl implements ProductRepository {
       );
       final response = await _dio.auth().post('/uploads', data: formData);
       return response.data['url'];
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao salvar Imagen', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao salvar Imagen');
     }

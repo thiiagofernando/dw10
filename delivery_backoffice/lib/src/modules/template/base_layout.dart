@@ -51,11 +51,11 @@ class BaseLayout extends StatelessWidget {
                         color: Colors.grey[50],
                         child: body,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

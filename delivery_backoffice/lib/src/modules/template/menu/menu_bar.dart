@@ -57,7 +57,7 @@ class _MenuBarState extends State<MenuBar> {
                 },
               );
             },
-          )
+          ),
         ],
       ),
     );

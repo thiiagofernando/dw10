@@ -79,7 +79,7 @@ class BaseHeader extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         );
       },

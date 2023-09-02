@@ -21,7 +21,7 @@ class OrderRepositoryImpl implements OrderRepository {
           'status': status.acronym,
         },
       );
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao alterar status do pedido ${status.acronym}', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao alterar status do pedido ${status.acronym}');
     }
@@ -39,7 +39,7 @@ class OrderRepositoryImpl implements OrderRepository {
       );
 
       return orderResponse.data.map<OrderModel>((o) => OrderModel.fromMap(o)).toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar pedidos ', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar pedidos');
     }
@@ -53,7 +53,7 @@ class OrderRepositoryImpl implements OrderRepository {
           );
 
       return OrderModel.fromMap(orderResponse.data);
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar pedido ', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar pedido');
     }

@@ -106,7 +106,7 @@ class _PaymentTypeFormModalState extends State<PaymentTypeFormModal> {
                         enabled = value;
                       });
                     },
-                  )
+                  ),
                 ],
               ),
               const Divider(),
@@ -151,7 +151,7 @@ class _PaymentTypeFormModalState extends State<PaymentTypeFormModal> {
                       icon: const Icon(Icons.save),
                       label: const Text('Salvar'),
                     ),
-                  )
+                  ),
                 ],
               ),
             ],

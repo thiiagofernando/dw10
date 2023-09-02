@@ -242,7 +242,7 @@ class _ProductDatailPageState extends State<ProductDatailPage> with Loader, Mess
                                           'Confirmar',
                                           style: context.textStyles.textBold,
                                         ),
-                                      )
+                                      ),
                                     ],
                                   );
                                 },
