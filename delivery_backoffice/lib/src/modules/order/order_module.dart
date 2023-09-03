@@ -23,9 +23,6 @@ class OrderModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute(
-          '/',
-          child: (context, args) => const OrderPage(),
-        ),
+        ChildRoute('/', child: (context, args) => const OrderPage()),
       ];
 }

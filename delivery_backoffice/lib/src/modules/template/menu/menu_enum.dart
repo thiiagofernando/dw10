@@ -25,4 +25,11 @@ enum Menu {
   final String label;
 
   const Menu(this.route, this.assetIcon, this.assetIconSelected, this.label);
+  static Menu? findByPatch(String patch) {
+    final menu = Menu.values.where((element) => patch.contains(element.route));
+    if (menu.isNotEmpty) {
+      return menu.first;
+    }
+    return null;
+  }
 }
