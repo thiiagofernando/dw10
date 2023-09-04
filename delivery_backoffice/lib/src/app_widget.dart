@@ -12,7 +12,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Modular.setInitialRoute('/login');
+    Modular.setInitialRoute('/order');
     Modular.setNavigatorKey(_navigatorKey);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,

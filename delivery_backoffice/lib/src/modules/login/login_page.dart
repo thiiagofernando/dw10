@@ -9,6 +9,7 @@ import '../../core/ui/helpers/size_extensions.dart';
 import '../../core/ui/styles/colors_app.dart';
 import '../../core/ui/styles/text_styles.dart';
 import 'login_controller.dart';
+import 'package:universal_html/html.dart' as html;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -39,7 +40,6 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
       controller.login(emailTEC.text, passwordTEC.text);
     }
   }
-
   @override
   void initState() {
     statusReactionDisposer = reaction(
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
             break;
           case LoginStateStatus.success:
             hideLoader();
-            Modular.to.navigate('/');
+            Modular.to.navigate('/order');
             break;
           case LoginStateStatus.errror:
             hideLoader();
